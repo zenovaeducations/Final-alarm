@@ -1,0 +1,8 @@
+// ADD this match block INSIDE your existing `match /databases/{database}/documents { ... }` block.
+// This no-login version intentionally allows public reads/writes to alarm schedules.
+// WARNING: Anyone who can access your site or Firebase project can create, edit, or delete alarms.
+// Do not replace your full existing Firestore rules with this fragment.
+match /alarmSchedules/{scheduleId} {
+  allow read: if true;
+  allow create, update, delete: if true;
+}
